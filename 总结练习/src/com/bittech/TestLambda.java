@@ -65,7 +65,8 @@ public class TestLambda {
         System.out.println(message4.add(4, 5));
     }
 
-    public static void main(String[] args) {
+
+    public static void code4() {
         //定义  返回值 方法名 (参数列表)
         //使用  方法名(参数值列表)
         //函数    y   = f(x)
@@ -91,7 +92,7 @@ public class TestLambda {
                 }
         );
         convert(
-                (x)->{
+                (x) -> {
                     System.out.println(x);
                     return String.valueOf(x);
                 }
@@ -105,6 +106,53 @@ public class TestLambda {
     public static void convert(IUtil1<Integer, String> iUtil1) {
         System.out.println(iUtil1.convert(20));
     }
+
+    public static void code5() {
+        //object -> method -> other object
+        IUtil2<String> iUtil2 = () -> {
+            return "Hello";
+        };
+        System.out.println(iUtil2.switchParam());
+
+//        "Hello".toUpperCase();
+
+        IUtil2<String> iUtil21 = "Hello"::toUpperCase;
+        System.out.println(iUtil21.switchParam());
+    }
+
+    public static void code6() {
+        IUtil3<String, Integer> iUtil3 = (p1, p2) -> {
+            return p1.compareTo(p2);
+        };
+        int compareRs = iUtil3.compare("Hello", "HEllo");
+        System.out.println(compareRs);
+
+        //类引用成员方法
+        IUtil3<String, Integer> iUtil31 = String::compareTo;
+        System.out.println(iUtil31.compare("Hello", "HEllo"));
+
+    }
+
+    public static void main(String[] args) {
+
+        //FOP：  z  = f(x,y)
+        //OOP :  z  = new Z(x,y)
+        IUtil4<String, Integer, Person2> iUtil4 = (p1, p2) -> {
+            return new Person2(p1, p2);
+        };
+
+        Person2 person2 = iUtil4.createObject("zhangsan", 22);
+        System.out.println(person2);
+
+        IUtil4<String, Integer, Person2> iUtil41 = Person2::new;
+        IUtil5<Person2> iUtil5 = Person2::new;
+        Person2 person21 = iUtil41.createObject("Jack", 22);
+        Person2 person22 = iUtil5.createObject();
+        System.out.println(person21);
+        System.out.println(person22);
+    }
+
+
 }
 
 @FunctionalInterface
@@ -112,6 +160,26 @@ interface IUtil1<P, R> {
     R convert(P p);
 }
 
+@FunctionalInterface
+interface IUtil2<R> {
+    R switchParam();
+}
+
+@FunctionalInterface
+interface IUtil3<P, R> {
+    R compare(P p1, P p2);
+}
+
+//   f(x,y) = z   z = object
+@FunctionalInterface
+interface IUtil4<P1, P2, R> {
+    R createObject(P1 p1, P2 p2);
+}
+
+@FunctionalInterface
+interface IUtil5<R> {
+    R createObject();
+}
 
 @FunctionalInterface
 interface IMessage2 {
@@ -128,4 +196,41 @@ interface IMessage4 {
     // z = f(x,y)   f { x + y }
     // y =f(x)
     int add(int x, int y);
+}
+
+class Person2 {
+    private String name;
+    private Integer age;
+
+    public Person2() {
+    }
+
+    public Person2(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person2{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
