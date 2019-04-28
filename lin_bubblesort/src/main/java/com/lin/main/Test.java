@@ -1,9 +1,6 @@
 package com.lin.main;
 
-import com.lin.sort.TestBubbleSort;
-import com.lin.sort.TestInsertSort;
-import com.lin.sort.TestSelectSort;
-import com.lin.sort.TestShellSort;
+import com.lin.sort.*;
 
 import java.util.Arrays;
 
@@ -39,13 +36,13 @@ public class Test {
             array[i]=1000-i;
         }
         long start = System.nanoTime();
-        TestInsertSort.insertSort(array);
+        TestShellSort.shellSort(array);
         long end = System.nanoTime();
         System.out.println(Arrays.toString(array));
         System.out.println(end-start);
     }
 
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
         int[] array=new int[1000];
         for (int i = 0; i < array.length; i++) {
             array[i]=1000-i;
@@ -56,5 +53,15 @@ public class Test {
         System.out.println(Arrays.toString(array));
         System.out.println(end-start);
     }
-
+    public static void main(String[] args) {
+        int[] array=new int[1000];
+        for (int i = 0; i < array.length; i++) {
+            array[i]=1000-i;
+        }
+        long start = System.nanoTime();
+        TestHeapSort.heapSort(array);
+        long end = System.nanoTime();
+        System.out.println(Arrays.toString(array));
+        System.out.println(end-start);
+    }
 }
