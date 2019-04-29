@@ -5,6 +5,14 @@ package com.lin.sort;
  * Author:  llf
  * Created in 2019/4/26 19:37
  */
+
+/**
+ * 堆排序:效率高
+ * 时间复杂度:O(N*logN)
+ * 空间复杂度:O(1)
+ * 稳定性:不稳定
+ */
+
 public class TestHeapSort {
     public static void heapSort(int[] array) {
         for (int i = (array.length - 1 - 1 / 2); i > 0; i--) {
