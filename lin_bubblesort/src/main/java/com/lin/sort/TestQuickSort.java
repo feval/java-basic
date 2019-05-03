@@ -84,5 +84,59 @@ public class TestQuickSort {
             }
         }
     }
-    
+
+    //优化   三数取中法+插入排序
+    public static void quickSort2(int[] array) {
+        quick1(array, 0, array.length - 1);
+    }
+    public static void quick1(int[] array, int low, int high) {
+        if (low == high) {
+            return;
+        }
+        if (high - low + 1 <= 10) {
+            insertSort(array, low, high);
+        }
+        takeThreeNumber(array,low,high);
+        int par=partion(array,low,high);
+        if (par>low+1) {
+            quick1(array,low,par-1);
+        }
+        if (par<high-1) {
+            quick1(array,par+1,high);
+        }
+    }
+
+    private static void takeThreeNumber(int[] array, int low, int high) {
+        int mid=(low+high)>>>1;
+        if (array[mid]>array[low]) {
+            swap(array,low,mid);
+        }
+        if (array[mid]>array[high]) {
+            swap(array,mid,high);
+        }
+        if (array[low]>array[high]) {
+            swap(array,low,high);
+        }
+    }
+
+    private static void swap(int[] array, int low, int high) {
+        int tmp=array[low];
+        array[low]=array[high];
+        array[high]=tmp;
+    }
+
+    private static void insertSort(int[] array, int low, int high) {
+        for (int i = low+1; i < high; i++) {
+            int j;
+            int tmp = array[i];
+            for (j = i - 1; j >= low; j--) {
+                if (tmp < array[j]) {
+                    array[j + 1] = array[j];
+                } else {
+                    break;
+                }
+            }
+            array[j + 1] = tmp;
+        }
+    }
 }
