@@ -82,7 +82,7 @@ public class Test {
             array[i]=1000-i;
         }
         long start = System.nanoTime();
-        TestMergeSort.mergeSort(array);
+        TestMergeSort.mergeSort1(array);
         long end = System.nanoTime();
         System.out.println(Arrays.toString(array));
         System.out.println(end-start);
