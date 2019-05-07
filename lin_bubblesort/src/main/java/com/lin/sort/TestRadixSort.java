@@ -25,16 +25,16 @@ public class TestRadixSort {
             maxDoght++;
             max=max/10;
         }
-        int[][] buckets=new int[10][array.length];
+        int[][] buckets=new int[10][array.length];     //创建桶
         int base=10;
-        for (int i = 0; i < maxDoght; i++) {
+        for (int i = 0; i < maxDoght; i++) {            //入桶
             int[] bktlen=new int[10];
             for (int j = 0; j < array.length; j++) {
                 int whichBucket=array[j]%base/(base/10);
                 buckets[whichBucket][bktlen[whichBucket]]=array[j];
                 bktlen[whichBucket]++;
             }
-            int k=0;
+            int k=0;                    //出桶
             for (int b = 0; b < buckets.length; b++) {
                 for (int p = 0; p < bktlen[b]; p++) {
                     array[k++]=buckets[b][p];

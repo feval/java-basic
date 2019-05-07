@@ -88,13 +88,25 @@ public class Test {
         System.out.println(end-start);
     }
 
-    public static void main(String[] args) {
+    public static void main8(String[] args) {
         int[] array=new int[1000];
         for (int i = 0; i < array.length; i++) {
             array[i]=1000-i;
         }
         long start = System.nanoTime();
         TestRadixSort.radixSort(array);
+        long end = System.nanoTime();
+        System.out.println(Arrays.toString(array));
+        System.out.println(end-start);
+    }
+
+    public static void main(String[] args) {
+        int[] array=new int[1000];
+        for (int i = 0; i < array.length; i++) {
+            array[i]=i%20;
+        }
+        long start = System.nanoTime();
+        TestCountingSort.countSort(array);
         long end = System.nanoTime();
         System.out.println(Arrays.toString(array));
         System.out.println(end-start);
