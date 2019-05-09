@@ -7,6 +7,13 @@ import java.util.Arrays;
  * Author:  llf
  * Created in 2019/5/7 11:13
  */
+ 
+ /**
+ 计数排序效率高,但使用范围和场景有限
+ 时间复杂度:O(MAX(N,范围))
+ 空间复杂度:O(范围)
+ 稳定性:稳定
+ */
 public class TestCountingSort {
 
     public static void countSort(int[] array) {
