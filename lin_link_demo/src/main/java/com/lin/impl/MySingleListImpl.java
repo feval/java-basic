@@ -3,7 +3,7 @@ package com.lin.impl;
 import com.lin.ILinked;
 
 /**
- * Description:
+ * Description:无头单向非循环链表
  * Author:  llf
  * Created in 2019/5/7 13:27
  */

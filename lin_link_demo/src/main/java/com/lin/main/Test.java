@@ -34,6 +34,5 @@ public class Test {
 
     public static void main(String[] args) {
         MySingleListImpl mySingleList=new MySingleListImpl();
-        mySingleList.addFirst();
     }
 }
