@@ -10,11 +10,19 @@ import com.lin.ILinked;
 public class MySingleListImpl implements ILinked {
     public class Node {
         private int data;
-        private Node next;
+        public Node next;
 
         public Node(int data) {
             this.data = data;
             this.next = null;
+        }
+
+        public int getData() {
+            return data;
+        }
+
+        public Node getNext() {
+            return next;
         }
     }
     private Node head;
@@ -164,7 +172,7 @@ public class MySingleListImpl implements ILinked {
     @Override
     public void display() {
         Node cur=this.head;
-        while (cur.next!=null) {
+        while (cur!=null) {
             System.out.print(cur.data+" ");
             cur=cur.next;
         }
@@ -178,5 +186,15 @@ public class MySingleListImpl implements ILinked {
             this.head.next=null;
             this.head=cur;
         }
+    }
+
+
+    public void show(Node newHead) {
+        Node cur=newHead;
+        while (cur!=null) {
+            System.out.print(cur.data+" ");
+            cur=cur.next;
+        }
+        System.out.println();
     }
 }

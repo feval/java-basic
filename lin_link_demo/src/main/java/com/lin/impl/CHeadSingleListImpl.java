@@ -48,7 +48,6 @@ public class CHeadSingleListImpl implements CLinkList {
     @Override
     public boolean addIndex(int index, int data) {
         checkIndex(index);
-        Node node
         return false;
     }
 
