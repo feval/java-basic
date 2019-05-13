@@ -8,6 +8,8 @@ import com.lin.ILinked;
  * Created in 2019/5/7 13:27
  */
 public class MySingleListImpl implements ILinked {
+
+
     public class Node {
         private int data;
         public Node next;
@@ -186,6 +188,15 @@ public class MySingleListImpl implements ILinked {
             this.head.next=null;
             this.head=cur;
         }
+    }
+    public void createCycle() {
+    }
+    public boolean hasCycle() {
+        return false;
+    }
+
+    public Node detectCyle() {
+        return null;
     }
 
 
