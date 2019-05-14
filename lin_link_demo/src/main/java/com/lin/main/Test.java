@@ -61,15 +61,17 @@ public class Test {
         mySingleList.display();
         mySingleList1.display();
         System.out.println("===============");
-        MySingleListImpl.Node cur = getIntersectionNode(mySingleList.getHead(), mySingleList1.getHead());
-        System.out.println(cur.getData());
-/*        mySingleList.createCycle();
+        MySingleListImpl.Node cur2= getIntersectionNode(mySingleList.getHead(), mySingleList1.getHead());
+        System.out.println(cur2.getData());
+
+        mySingleList.createCycle();
         System.out.println(mySingleList.hasCycle());
 
-        MySingleListImpl.Node cur=mySingleList.detectCyle();*/
+        MySingleListImpl.Node cur=mySingleList.detectCyle();
+        System.out.println(cur.getData());
     }
 
-    //参数为对应单链表的头结点
+    //参数为对应单链表的头结点   交叉链表的相遇点
     private static MySingleListImpl.Node getIntersectionNode(MySingleListImpl.Node headA, MySingleListImpl.Node headB) {
         if (headA == null || headB == null) {
             return null;
