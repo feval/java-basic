@@ -10,7 +10,6 @@ import jdk.nashorn.internal.objects.NativeUint8Array;
  */
 public class MySingleListImpl implements ILinked {
 
-
     public class Node {
         private int data;
         public Node next;
@@ -193,6 +192,117 @@ public class MySingleListImpl implements ILinked {
         }
     }
 
+    //校验回文   把中间之后的节点反指
+    public boolean chkPalindrome() {
+        if (this.head==null) {
+            return false;
+        }else if (this.head.next==null) {
+            return true;
+        }
+        Node fast=this.head;
+        Node slow=this.head;
+        while(fast!=null&&fast.next!=null) {
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        Node p=slow.next;
+        Node p1=p.next;
+        while (p!=null) {
+            p.next=slow;
+            slow=p;
+            p=p1;
+            if (p1!=null) {
+                p1=p1.next;
+            }
+        }
+        while (slow!=this.head) {
+            if (slow.data!=this.head.data) {
+                return false;
+            }
+            if (this.head.next==slow) {
+                return true;
+            }
+            this.head=this.head.next;
+            slow=slow.next;
+        }
+        return true;
+    }
+
+    //单链表的逆置(头插法进行逆置)
+    public Node reverseList() {
+        Node reverseHead=null;
+        Node prev=null;
+        Node cur=this.head;
+        while (cur!=null) {
+            Node curNext=cur.next;
+            if (curNext==null) {
+                reverseHead=cur;
+            }
+            cur.next=prev;
+            prev=cur;
+            cur=curNext;
+        }
+        return reverseHead;
+    }
+
+    //删除所有的重复元素
+    public Node deleteDuplication() {
+        Node newHead=new Node(-1);
+        Node tmpHead=newHead;
+        Node cur=this.head;
+        while (cur!=null) {
+            if (cur.next!=null&&cur.data==cur.next.data) {
+                while(cur.next !=null&&cur.data==cur.next.data) {
+                    cur=cur.next;
+                }
+                cur=cur.next;
+                newHead.next=cur;
+            } else {
+                newHead.next=cur;
+                newHead=cur;
+                cur=cur.next;
+            }
+        }
+        return tmpHead.next;
+    }
+
+    //将data小于x的节点放在前面.data大于x的节点放在后面
+    public Node partition(int x) {
+        Node beforeStart=null;
+        Node beforeEnd=null;
+        Node afterStart=null;
+        Node afterEnd=null;
+        Node pHead=this.head;
+        while (pHead!=null) {
+            Node pHeadNext=pHead.next;
+            pHead.next=null;
+            if (pHead.data<x) {
+                if (beforeStart==null) {
+                    beforeStart=pHead;
+                    beforeEnd=beforeStart;
+                }else {
+                    beforeEnd.next=pHead;
+                    beforeEnd=beforeEnd.next;
+                }
+            }else {
+                if (afterStart==null) {
+                    afterStart=pHead;
+                    afterEnd=afterStart;
+                }else {
+                    afterEnd.next=pHead;
+                    afterEnd=afterEnd.next;
+                }
+            }
+            pHead=pHeadNext;
+        }
+        //第一段没有数据的时候,单链表中所有数据都比x大
+        if (beforeStart==null) {
+            return afterStart;
+        }
+        beforeEnd.next=afterStart;
+        return beforeStart;
+    }
+
     //创建一个环
     public void createCycle() {
         Node cur = this.head;
@@ -219,6 +329,7 @@ public class MySingleListImpl implements ILinked {
         return false;
     }
 
+    //找到环的入口
     public Node detectCyle() {
         Node fast=this.head;
         Node slow=this.head;

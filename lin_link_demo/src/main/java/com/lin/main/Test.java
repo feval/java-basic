@@ -67,8 +67,15 @@ public class Test {
         mySingleList.createCycle();
         System.out.println(mySingleList.hasCycle());
 
-        MySingleListImpl.Node cur=mySingleList.detectCyle();
-        System.out.println(cur.getData());
+        MySingleListImpl.Node cur3=mySingleList.detectCyle();
+        System.out.println(cur3.getData());
+
+        System.out.println(mySingleList.chkPalindrome());
+        mySingleList.reverseList();
+        mySingleList.show(mySingleList.reverseList());
+        mySingleList.show(mySingleList.deleteDuplication());
+        MySingleListImpl.Node cur =mySingleList.partition(97);
+        mySingleList.show(cur);
     }
 
     //参数为对应单链表的头结点   交叉链表的相遇点
