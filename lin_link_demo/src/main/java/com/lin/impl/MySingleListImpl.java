@@ -1,7 +1,6 @@
 package com.lin.impl;
 
 import com.lin.ILinked;
-import jdk.nashorn.internal.objects.NativeUint8Array;
 
 /**
  * Description:无头单向非循环链表
@@ -9,6 +8,8 @@ import jdk.nashorn.internal.objects.NativeUint8Array;
  * Created in 2019/5/7 13:27
  */
 public class MySingleListImpl implements ILinked {
+
+
 
     public class Node {
         private int data;
@@ -166,7 +167,7 @@ public class MySingleListImpl implements ILinked {
     public int getLength() {
         Node cur = this.head;
         int count = 0;
-        while (cur.next != null) {
+        while (cur != null) {
             cur = cur.next;
             count++;
         }
@@ -343,14 +344,29 @@ public class MySingleListImpl implements ILinked {
         if (fast==null||fast.next== null) {
             return null;
         }
-        slow=this.head;
         while (slow!=fast) {
             slow=slow.next;
             fast=fast.next;
         }
         return slow;
     }
-
+    //查找倒数第几个元素
+    public Node findKthToTail(int k) {
+        Node fast=this.head;
+        Node slow=this.head;
+        if (fast==null||k<=0||k>getLength()) {
+            return null;
+        }
+        while(k-1>0) {
+            fast=fast.next;
+            k--;
+        }
+        while(fast.next!=null) {
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return slow;
+    }
 
     public void show(Node newHead) {
         Node cur = newHead;

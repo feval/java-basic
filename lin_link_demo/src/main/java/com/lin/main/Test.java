@@ -67,15 +67,21 @@ public class Test {
         System.out.println(mySingleList.hasCycle());
 
         MySingleListImpl.Node cur3=mySingleList.detectCyle();
-        System.out.println(cur3.getData());*/
+        System.out.println(cur3.getData());
+
+        mySingleList.display();
 
         System.out.println("==========================");
-        System.out.println(mySingleList.chkPalindrome());
-       // mySingleList.reverseList();
-       // mySingleList.show(mySingleList.reverseList());
+        //System.out.println(mySingleList.chkPalindrome());
+        mySingleList.reverseList();
+        mySingleList.show(mySingleList.reverseList());
         mySingleList.show(mySingleList.deleteDuplication());
-        MySingleListImpl.Node cur =mySingleList.partition(97);
-        mySingleList.show(cur);
+        MySingleListImpl.Node cur = mySingleList.partition(97);
+        mySingleList.show(cur);*/
+
+        MySingleListImpl.Node cur = mySingleList.findKthToTail(6);
+        System.out.println(cur.getData());
+
     }
 
     //参数为对应单链表的头结点   交叉链表的相遇点
@@ -106,11 +112,11 @@ public class Test {
             myLen = headBLength - headALength;
         }
         for (int i = 0; i < myLen; i++) {
-            pL=pL.getNext();
+            pL = pL.getNext();
         }
         while (pL != null && pS != null && pL != pS) {
-            pL=pL.getNext();
-            pS=pS.getNext();
+            pL = pL.getNext();
+            pS = pS.getNext();
         }
         if (pL != null && pS != null && pL == pS) {
             return pL;
