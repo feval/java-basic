@@ -33,7 +33,7 @@ public class Test {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         MySingleListImpl mySingleList = new MySingleListImpl();
         // mySingleList.addFirst(18);
         mySingleList.addLast(1);
@@ -79,10 +79,26 @@ public class Test {
         MySingleListImpl.Node cur = mySingleList.partition(97);
         mySingleList.show(cur);*/
 
-        MySingleListImpl.Node cur = mySingleList.findKthToTail(6);
-        System.out.println(cur.getData());
+/*
+        MySingleListImpl.Node cur1 = mySingleList.findKthToTail(6);
+        System.out.println(cur1.getData());
 
+        MySingleListImpl.Node cur = mySingleList.middleNode();
+        System.out.println(cur.getData());
+*/
+
+        System.out.println(mySingleList.contains(178));
+        mySingleList.removeAllKey(18);
+        mySingleList.display();
+        //mySingleList.clear();
+        Thread.sleep(1000);
+        System.out.println("睡醒了");
+        mySingleList.remove(13);
+        mySingleList.display();
+        mySingleList.remove(15);
+        mySingleList.display();
     }
+
 
     //参数为对应单链表的头结点   交叉链表的相遇点
     private static MySingleListImpl.Node getIntersectionNode(MySingleListImpl.Node headA, MySingleListImpl.Node headB) {
