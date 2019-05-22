@@ -102,21 +102,47 @@ public class CHeadSingleListImpl implements CLinkList {
 
     @Override
     public void removeAllKey(int key) {
-
+        Node pre=this.head;
+        Node cur=this.head.next;
+        while (cur!=this.head) {
+            if (cur.data==key) {
+                pre.next=cur.next;
+                cur=cur.next;
+            }else {
+                pre=cur;
+                cur=cur.next;
+            }
+        }
     }
 
     @Override
     public int getLength() {
-        return 0;
+        int count=0;
+        Node cur=this.head.next;
+        while(cur!=this.head) {
+            count++;
+            cur=cur.next;
+        }
+        return count;
     }
 
     @Override
     public void display() {
-
+        Node cur=this.head.next;
+        while (cur!=this.head) {
+            System.out.print(cur.data+" ");
+            cur=cur.next;
+        }
+        System.out.println();
     }
 
     @Override
     public void clear() {
-
+        while (this.head.next!=this.head) {
+            Node cur = this.head.next;
+            this.head.next = cur.next;
+            cur.next = null;
+        }
+        this.head=null;
     }
 }
