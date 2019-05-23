@@ -1,6 +1,7 @@
 package com.lin.main;
 
 import com.lin.ISequence;
+import com.lin.impl.CHeadSingleListImpl;
 import com.lin.impl.MySingleListImpl;
 import com.lin.impl.SequenceImpl;
 
@@ -33,7 +34,7 @@ public class Test {
     }
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main2(String[] args) throws InterruptedException {
         MySingleListImpl mySingleList = new MySingleListImpl();
         // mySingleList.addFirst(18);
         mySingleList.addLast(1);
@@ -168,5 +169,24 @@ public class Test {
             tmpNode.next = headB;
         }
         return node.next;
+    }
+
+    public static void main(String[] args) {
+        CHeadSingleListImpl cHeadSingleList = new CHeadSingleListImpl();
+        cHeadSingleList.addFirst(12);
+        cHeadSingleList.addFirst(10);
+        cHeadSingleList.addFirst(8);
+        cHeadSingleList.addLast(15);
+        cHeadSingleList.addFirst(6);
+        cHeadSingleList.display();
+        cHeadSingleList.addIndex(2, 9);
+        cHeadSingleList.addIndex(4, 9);
+        cHeadSingleList.display();
+        System.out.println(cHeadSingleList.contains(11));
+        cHeadSingleList.removeAllKey(9);
+        cHeadSingleList.display();
+        System.out.println(cHeadSingleList.getLength());
+        cHeadSingleList.clear();
+        System.out.println(cHeadSingleList);
     }
 }

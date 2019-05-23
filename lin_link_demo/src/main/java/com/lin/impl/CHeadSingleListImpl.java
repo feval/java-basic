@@ -61,6 +61,7 @@ public class CHeadSingleListImpl implements CLinkList {
         }
         Node node=new Node(data);
         node.next=cur.next;
+        cur.next=node;
         return true;
     }
 
