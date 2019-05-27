@@ -93,31 +93,92 @@ public class DoubleLinkListImpl implements IDoubleLinked {
 
     @Override
     public boolean contains(int key) {
+        Node cur=this.head;
+        while (cur!=null) {
+            if (cur.data==key) {
+                return true;
+            }
+            cur=cur.next;
+        }
         return false;
     }
 
     @Override
     public int remove(int key) {
-        return 0;
+        Node cur=this.head;
+        while (cur!=null) {
+            if (cur.data==key) {
+                int oldData=cur.data;
+                if (cur==this.head) {
+                    this.head=this.head.next;
+                    this.head.prev=null;
+                }else {
+                        cur.prev.next=cur.next;
+                        if (cur!=null) {
+                            cur.next.prev=cur.prev;
+                        }else {
+                            this.last=cur.prev;
+                        }
+                }
+                return oldData;
+            }
+            cur=cur.next;
+        }
+        return -1;
     }
 
     @Override
     public void removeAllKey(int key) {
-
+        Node cur=this.head;
+        while (cur!=null) {
+            if (cur.data==key) {
+                if (cur==this.head) {
+                    this.head=this.head.next;
+                    this.head.prev=null;
+                }else {
+                    cur.prev.next=cur.next;
+                    if (cur.next!=null) {
+                        cur.next.prev=cur.prev;
+                    }else {
+                        this.last=cur.prev;
+                    }
+                }
+            }
+            cur=cur.next;
+        }
     }
 
     @Override
     public int getLength() {
-        return 0;
+        int count=0;
+        Node cur=this.head;
+        while(cur!=null) {
+            count++;
+            cur=cur.next;
+        }
+        return count;
     }
 
     @Override
     public void display() {
+        Node cur=this.head;
+        while (cur!=null) {
+            System.out.print(cur.data+" ");
+            cur=cur.next;
+        }
+        System.out.println();
 
     }
 
     @Override
     public void clear() {
-
+        Node cur=null;
+        while (this.head!=null) {
+            cur=this.head.next;
+            head.next=null;
+            head.prev=null;
+            head=cur;
+        }
+        this.last=null;
     }
 }
