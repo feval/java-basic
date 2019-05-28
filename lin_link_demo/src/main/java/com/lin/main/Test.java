@@ -2,6 +2,7 @@ package com.lin.main;
 
 import com.lin.ISequence;
 import com.lin.impl.CHeadSingleListImpl;
+import com.lin.impl.DoubleLinkListImpl;
 import com.lin.impl.MySingleListImpl;
 import com.lin.impl.SequenceImpl;
 
@@ -171,7 +172,7 @@ public class Test {
         return node.next;
     }
 
-    public static void main(String[] args) {
+    public static void main3(String[] args) {
         CHeadSingleListImpl cHeadSingleList = new CHeadSingleListImpl();
         cHeadSingleList.addFirst(12);
         cHeadSingleList.addFirst(10);
@@ -188,5 +189,26 @@ public class Test {
         System.out.println(cHeadSingleList.getLength());
         cHeadSingleList.clear();
         System.out.println(cHeadSingleList);
+    }
+
+    public static void main(String[] args) {
+        DoubleLinkListImpl doubleLinkList=new DoubleLinkListImpl();
+        doubleLinkList.addLast(10);
+        doubleLinkList.addLast(12);
+        doubleLinkList.addLast(15);
+        doubleLinkList.addLast(8);
+        doubleLinkList.addFirst(8);
+        doubleLinkList.addFirst(6);
+        doubleLinkList.display();
+        doubleLinkList.addIndex(4,13);
+        doubleLinkList.display();
+        System.out.println(doubleLinkList.contains(13));
+        doubleLinkList.removeAllKey(8);
+        doubleLinkList.display();
+        System.out.println(doubleLinkList.getLength());
+        doubleLinkList.clear();
+        doubleLinkList.display();
+
+
     }
 }

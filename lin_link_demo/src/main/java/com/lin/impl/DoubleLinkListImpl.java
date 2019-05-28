@@ -2,8 +2,6 @@ package com.lin.impl;
 
 import com.lin.IDoubleLinked;
 
-import javax.naming.ldap.PagedResultsControl;
-import java.beans.IndexedPropertyDescriptor;
 
 /**
  * Description:不带头双向链表实现
@@ -46,8 +44,8 @@ public class DoubleLinkListImpl implements IDoubleLinked {
     public void addLast(int data) {
         Node node =new Node(data);
         if (this.head==null) {
-            this.head=null;
-            this.last=null;
+            this.head=node;
+            this.last=node;
         }else {
             this.last.next=node;
             node.prev=this.last;
