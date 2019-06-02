@@ -9,7 +9,7 @@ import com.lin.IMyStack;
  */
 public class MyStackImpl implements IMyStack {
     public void push(int item) {
-        
+
     }
 
     public int pop() {
