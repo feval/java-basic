@@ -1,0 +1,8 @@
+com\bite\session\SessionScope1.class
+com\bite\web\ClearHistoryServlet.class
+com\bite\cookie_rem\RemeberServlet.class
+com\bite\hello_cookie\HelloCookie.class
+com\bite\web\Add2CartServlet.class
+com\bite\web\GetProductServlet.class
+com\bite\session\SessionScope2.class
+com\bite\util\CookieUtils.class
