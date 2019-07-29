@@ -52,7 +52,7 @@ public class Test {
         mySingleList1.addLast(13);
         mySingleList1.display();
 
-        System.out.println("===========================");
+/*        System.out.println("===========================");
         MySingleListImpl.Node cur1 = mergeTwoLists(mySingleList.getHead(), mySingleList1.getHead());
         mySingleList.show(cur1);
 
@@ -63,16 +63,16 @@ public class Test {
         System.out.println("===============");
         MySingleListImpl.Node cur2= getIntersectionNode(mySingleList.getHead(), mySingleList1.getHead());
         System.out.println(cur2.getData());
-
         mySingleList.createCycle();
         System.out.println(mySingleList.hasCycle());
 
         MySingleListImpl.Node cur3=mySingleList.detectCyle();
-        System.out.println(cur3.getData());
+        System.out.println(cur3.getData());*/
 
+        System.out.println("==========================");
         System.out.println(mySingleList.chkPalindrome());
-        mySingleList.reverseList();
-        mySingleList.show(mySingleList.reverseList());
+       // mySingleList.reverseList();
+       // mySingleList.show(mySingleList.reverseList());
         mySingleList.show(mySingleList.deleteDuplication());
         MySingleListImpl.Node cur =mySingleList.partition(97);
         mySingleList.show(cur);
